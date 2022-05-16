@@ -9,16 +9,16 @@ xs = []
 ys = []
 
 video = cv2.VideoCapture("footvolleyball.mp4")
-#load tracker 
+# Carga el rastreador
 tracker = cv2.TrackerCSRT_create()
 
-#read the first frame of the video
+# Lee el primer cuadro del video
 success,img = video.read()
 
-#selct the bounding box on the image
-bbox = cv2.selectROI("tracking",img,False)
+# Selecciona el campo delimitador en la imagen
+bbox = cv2.selectROI("rastreando",img,False)
 
-#initialise the tracker on the img and the bounding box
+# Inicializa el rastreador en la imagen y el campo delimitador
 tracker.init(img,bbox)
 
 def goal_track(img,bbox):
@@ -32,7 +32,7 @@ def goal_track(img,bbox):
     print(dist)
 
     if(dist<=20):
-        cv2.putText(img,"Goal",(300,90),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),2)
+        cv2.putText(img,"Objetivo",(300,90),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),2)
 
     xs.append(c1)
     ys.append(c2)
@@ -43,17 +43,17 @@ def goal_track(img,bbox):
 def drawBox(img,bbox):
     x,y,w,h = int(bbox[0]),int(bbox[1]),int(bbox[2]),int(bbox[3])
     cv2.rectangle(img,(x,y),((x+w),(y+h)),(255,0,255),3,1)
-    cv2.putText(img,"Tracking",(75,90),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),2)
+    cv2.putText(img,"Rastreando",(75,90),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),2)
 
 
 
 def drawBox(img,bbox):
-    #write code for this function here
+    # Escribe el código de esta función aquí
     pass
 
 
 while True:
-   #Write the code inside loop here
+   # Escribe el código dentro del bucle aquí
    pass
 video.release()
 cv2.destroyALLwindows() 
